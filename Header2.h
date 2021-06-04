@@ -24,12 +24,12 @@ class Book : public Publication
 private:
 	std::string author;
 	std::string genre;
-	std::string inteplet;
+	std::string binding;
 public:
-	Book(std::string name, int page, std::string publishing_house, std::string author, std::string genre, std::string inteplet) :
-		Publication(name, page, publishing_house), author(author), genre(genre), inteplet(inteplet) {};
+	Book(std::string name, int page, std::string publishing_house, std::string author, std::string genre, std::string binding) :
+		Publication(name, page, publishing_house), author(author), genre(genre), binding(binding) {};
 	virtual void print();
-	std::string getAuthor();
+	std::string getBinding();
 };
 
 class Journal :public Publication

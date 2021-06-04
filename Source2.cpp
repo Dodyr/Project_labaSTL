@@ -36,13 +36,13 @@ bool Publication::operator()(Publication* p1, Publication* p2) const
 void Book::print()
 {
 	Publication::print();
-	std::cout << author << ' ' << std::endl;
+	std::cout << binding << ' ' << std::endl;
 	std::cout << "\n---------------------------\n";
 }
 
-std::string Book::getAuthor()
+std::string Book::getBinding()
 {
-	return author;
+	return binding;
 }
 
 void Journal::print()

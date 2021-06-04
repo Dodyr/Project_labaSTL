@@ -5,7 +5,8 @@ Library::Library(std::ifstream& fin)
 	std::getline(fin, name);
 	while (!fin.eof())
 	{
-		char ch = fin.get(); fin.ignore();
+		char ch = fin.get(); 
+		fin.ignore();
 		std::string name;
 		int page;
 		std::string publishing_house;
@@ -14,15 +15,12 @@ Library::Library(std::ifstream& fin)
 		fin.ignore();
 		getline(fin, publishing_house);
 		Publication* new_public;
-
 		std::string author;
 		std::string genre;
 		std::string inteplet;
-
 		int number;
 		int year;
 		std::string web_site;
-
 		switch (ch)
 		{
 		case 'b':
@@ -39,7 +37,6 @@ Library::Library(std::ifstream& fin)
 			new_public = new Journal(name, page, publishing_house, number, year, web_site);
 			break;
 		}
-
 		list_publications.push_back(new_public);
 		fin.ignore();
 	}
