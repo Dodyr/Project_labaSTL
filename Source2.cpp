@@ -1,6 +1,6 @@
 #include "Header1.h"
 
-Publication::Publication(std::string Name, int page, std::string publishing_house)
+Publication::Publication(std::string name, int page, std::string publishing_house)
 {
 	this->name = name;
 	this->page = page;
@@ -10,6 +10,11 @@ Publication::Publication(std::string Name, int page, std::string publishing_hous
 int Publication::GetPage()
 {
 	return page;
+}
+
+std::string Publication::getName()
+{
+	return name;
 }
 
 int Publication::Compare(Publication* p)
@@ -25,7 +30,7 @@ int Publication::Compare(Publication* p)
 
 void Publication::print()
 {
-	std::cout << name << std::endl;
+	std::cout << name << ' ' <<  page << ' ' << publishing_house <<std::endl;
 }
 
 bool Publication::operator()(Publication* p1, Publication* p2) const
@@ -36,7 +41,7 @@ bool Publication::operator()(Publication* p1, Publication* p2) const
 void Book::print()
 {
 	Publication::print();
-	std::cout << binding << ' ' << std::endl;
+	std::cout << author << ' ' << genre << ' ' << binding << std::endl;
 	std::cout << "\n---------------------------\n";
 }
 
@@ -48,6 +53,6 @@ std::string Book::getBinding()
 void Journal::print()
 {
 	Publication::print();
-	std::cout << ' ' << number << ' ' << year;
+	std::cout << ' ' << number << ' ' << year << ' ' << web_site;
 	std::cout << "\n--------------------\n";
 }

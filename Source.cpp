@@ -1,29 +1,25 @@
 #include <iostream>
 #include <Windows.h>
 #include <vector>
-#include <list>
-#include <fstream>
-
 #include "Header1.h"
-#include "Header2.h"
 
+//функция предполагает, что список публикаций отсортирован по количеству страниц по возрастанию
 void destroy_books(Library& library)
 {
     TList list = library.getList();
-    for (TIterator i = list.begin(); i != list.end();)
+    TIterator i = list.begin();
+    int min_pages = (*i)->GetPage();
+    while ((*i)->GetPage() == min_pages && i != list.end())
     {
-
         Book* book = dynamic_cast<Book*>(*i);
-        if (book)
+        if (book&& book->getBinding() == "softcover")
         {
-            if (book->getBinding() == "softcover")
-                i = list.erase(i);
-            else
-                i++;
+            i = list.erase(i);
         }
         else
             i++;
     }
+    library.setList(list);
 }
 
 int main()
@@ -34,7 +30,7 @@ int main()
     {
         Library library(fin);
         library.sort_();
-        //destroy_books(library);
+        destroy_books(library);
         library.print();
     }
     fin.close();

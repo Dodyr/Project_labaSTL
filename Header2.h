@@ -12,12 +12,11 @@ private:
 public:
 	Publication(std::string name, int page, std::string publishing_house);
 	int GetPage();
+	std::string getName();
 	int Compare(Publication* p);
 	virtual void print();
 	bool operator()(Publication* p1, Publication* p2) const;
 };
-
-
 
 class Book : public Publication
 {

@@ -15,32 +15,32 @@ Library::Library(std::ifstream& fin)
 		fin.ignore();
 		getline(fin, publishing_house);
 		Publication* new_public;
-		std::string author;
-		std::string genre;
-		std::string inteplet;
-		int number;
-		int year;
-		std::string web_site;
 		switch (ch)
 		{
 		case 'b':
-			getline(fin, author);
-			getline(fin, genre);
-			getline(fin, inteplet);
-			new_public = new Book(name, page, publishing_house, author, genre, inteplet);
-			break;
-		case 'j':
-			fin >> number;
-			fin >> year;
+		{
+			std::string author;
+			std::string genre;
+			std::string binding;
+			fin >> author >> genre >> binding;
 			fin.ignore();
-			getline(fin, web_site);
+			new_public = new Book(name, page, publishing_house, author, genre, binding);
+			break;
+		}
+		case 'j':
+		{
+			int number;
+			int year;
+			std::string web_site;
+			fin >> number >> year >> web_site;
+			fin.ignore();
 			new_public = new Journal(name, page, publishing_house, number, year, web_site);
 			break;
 		}
-		list_publications.push_back(new_public);
+		}
 		fin.ignore();
+		list_publications.push_back(new_public);
 	}
-	fin.close();
 }
 
 
@@ -56,7 +56,7 @@ TList Library::getList()
 
 void Library::setList(TList list)
 {
-	this->list_publications = list;
+	list_publications = list;
 }
 
 void Library::print()
@@ -71,6 +71,6 @@ void Library::print()
 
 void Library::sort_()
 {
-	auto cmp = [](Publication* a, Publication* b) {a->GetPage() < b->GetPage(); };
+	auto cmp = [](Publication* a, Publication* b)->bool {return a->GetPage() < b->GetPage(); };
 	list_publications.sort(cmp);
 }
