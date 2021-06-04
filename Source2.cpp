@@ -1,15 +1,15 @@
 #include "Header1.h"
 
-Publication::Publication(std::string name, int page, std::string publishing_house)
+Publication::Publication(std::string name, int number_of_pages, std::string publishing_house)
 {
 	this->name = name;
-	this->page = page;
+	this->number_of_pages = number_of_pages;
 	this->publishing_house = publishing_house;
 }
 
-int Publication::GetPage()
+int Publication::GetNPages()
 {
-	return page;
+	return number_of_pages;
 }
 
 std::string Publication::getName()
@@ -20,17 +20,17 @@ std::string Publication::getName()
 int Publication::Compare(Publication* p)
 {
 	int res = -1;
-	if (p->page == page)
+	if (p->number_of_pages == number_of_pages)
 		res = 0;
 	else
-		if (page > p->page)
+		if (number_of_pages > p->number_of_pages)
 			res = 1;
 	return res;
 }
 
 void Publication::print()
 {
-	std::cout << name << ' ' <<  page << ' ' << publishing_house <<std::endl;
+	std::cout << name << ' ' << number_of_pages << ' ' << publishing_house <<std::endl;
 }
 
 bool Publication::operator()(Publication* p1, Publication* p2) const

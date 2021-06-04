@@ -8,8 +8,8 @@ void destroy_books(Library& library)
 {
     TList list = library.getList();
     TIterator i = list.begin();
-    int min_pages = (*i)->GetPage();
-    while ((*i)->GetPage() == min_pages && i != list.end())
+    int min_pages = (*i)->GetNPages();
+    while ((*i)->GetNPages() == min_pages && i != list.end())
     {
         Book* book = dynamic_cast<Book*>(*i);
         if (book&& book->getBinding() == "softcover")

@@ -8,10 +8,10 @@ Library::Library(std::ifstream& fin)
 		char ch = fin.get(); 
 		fin.ignore();
 		std::string name;
-		int page;
+		int number_of_pages;
 		std::string publishing_house;
 		getline(fin, name);
-		fin >> page;
+		fin >> number_of_pages;
 		fin.ignore();
 		getline(fin, publishing_house);
 		Publication* new_public;
@@ -24,7 +24,7 @@ Library::Library(std::ifstream& fin)
 			std::string binding;
 			fin >> author >> genre >> binding;
 			fin.ignore();
-			new_public = new Book(name, page, publishing_house, author, genre, binding);
+			new_public = new Book(name, number_of_pages, publishing_house, author, genre, binding);
 			break;
 		}
 		case 'j':
@@ -34,7 +34,7 @@ Library::Library(std::ifstream& fin)
 			std::string web_site;
 			fin >> number >> year >> web_site;
 			fin.ignore();
-			new_public = new Journal(name, page, publishing_house, number, year, web_site);
+			new_public = new Journal(name, number_of_pages, publishing_house, number, year, web_site);
 			break;
 		}
 		}
