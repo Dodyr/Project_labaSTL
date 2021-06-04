@@ -11,6 +11,7 @@ private:
 	std::string publishing_house;
 public:
 	Publication(std::string name, int number_of_pages, std::string publishing_house);
+	virtual ~Publication() {};
 	int GetNPages();
 	std::string getName();
 	int Compare(Publication* p);
@@ -29,6 +30,7 @@ public:
 		Publication(name, number_of_pages, publishing_house), author(author), genre(genre), binding(binding) {};
 	virtual void print();
 	std::string getBinding();
+	virtual ~Book() {};
 };
 
 class Journal :public Publication
@@ -41,6 +43,7 @@ public:
 	Journal(std::string name, int number_of_pages, std::string publishing_house, int number, int year, std::string  web_site) :
 		Publication(name, number_of_pages, publishing_house), number(number), year(year), web_site(web_site) {};
 	virtual void print();
+	virtual ~Journal() {};
 
 };
 

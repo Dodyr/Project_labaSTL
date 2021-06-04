@@ -71,6 +71,6 @@ void Library::print()
 
 void Library::sort_()
 {
-	auto cmp = [](Publication* a, Publication* b)->bool {return a->GetPage() < b->GetPage(); };
+	auto cmp = [](Publication* a, Publication* b)->bool {return a->GetNPages() < b->GetNPages(); };
 	list_publications.sort(cmp);
 }

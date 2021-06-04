@@ -14,6 +14,7 @@ void destroy_books(Library& library)
         Book* book = dynamic_cast<Book*>(*i);
         if (book&& book->getBinding() == "softcover")
         {
+            delete book;
             i = list.erase(i);
         }
         else
